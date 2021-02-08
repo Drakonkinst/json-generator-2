@@ -150,6 +150,7 @@ const Generator = (() => {
             }, UPDATE_INTERVAL);
             this.container.appendTo(".current-generator");
             this.update();
+            this.preset.onLoad();
         }
         
         stop() {

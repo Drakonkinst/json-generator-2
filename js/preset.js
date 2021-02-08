@@ -659,6 +659,7 @@ const Preset = (() => {
             this.data = {};
             this.latestOutput = "";
             this.edited = false;
+            this.loaded = false;
         }
         
         /* LOGIC & FUNCTIONS */
@@ -692,7 +693,6 @@ const Preset = (() => {
             }
             
             this.onUpdate();
-            this.onLoad();
         }
         
         /* MUTATORS */
@@ -720,8 +720,13 @@ const Preset = (() => {
         }
         
         onLoad() {
+            if(this.loaded) {
+                return;
+            }
+            
             if(typeof this.loadCallback === "function") {
                 this.loadCallback();
+                this.loaded = true;
             }
         }
         
