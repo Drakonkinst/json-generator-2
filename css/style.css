@@ -13,6 +13,8 @@ th, td {
     text-align: center;
     vertical-align: middle;
     font-weight: normal;
+    cursor: default;
+    background-color: white;
 }
 
 td input, .checkbox-input {
@@ -37,7 +39,7 @@ pre {
 fieldset {
     display: inline-block;
     vertical-align: top;
-    width: 400px;
+    min-width: 400px;
     border: none;
 }
 
@@ -55,8 +57,32 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+button {
+    /* no selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+    
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .header-content {
     margin-bottom: 30px;
+}
+
+.preset-options {
+    margin-top: 15px;
+}
+
+.preset-option {
+    margin-right: 10px;
+    margin-top: 5px;
 }
 
 .output-content {
@@ -66,14 +92,25 @@ h1, h2, h3, h4, h5, h6 {
 .output-text {
     min-width: 800px;
     min-height: 250px;
+    border-radius: 5px;
+}
+
+.output-controls {
+    margin-top: 2px;
 }
 
 .output-control {
-    margin-right: 10px;
+    margin-right: 15px;
+}
+
+.toggle-minify {
+    margin-right: 5px;
 }
 
 .input-content {
     border: 1px solid #aaa;
+    border-radius: 10px;
+    padding: 5px;
     display: inline-block;
 }
 
@@ -86,14 +123,32 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     text-align: right;
     margin-right: 2px;
+    vertical-align: top;
+}
+
+.has_tooltip {
+    cursor: help;
 }
 
 .text-input {
     width: 100px;
 }
 
-.array-input {
+.list-input {
     width: 190px;
+}
+
+.long-list-input {
+    padding: 5px;
+    width: 225px;
+    height: 75px;
+}
+
+.long-list-input, .long-list-input::placeholder {
+    white-space: nowrap;
+    overflow: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
 }
 
 .dropdown-input {
@@ -112,15 +167,34 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
 }
 
-.description-component {
+.cbt-cell .checkbox-input {
+    cursor: pointer;
+}
+
+.nested-content {
+    margin-left: 30px;
+}
+
+.nested-input-label {
+    margin-top: 3px;
+    font-weight: bold;
+    float: left;
+}
+
+.nested-input-control {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.component {
     padding: 10px;
     margin-left: 20px;
 }
 
-.description-sub-input {
+.component-input {
     position: relative;
 }
 
-.description-delete-component {
+.delete-component {
     margin-left: 175px;
 }
