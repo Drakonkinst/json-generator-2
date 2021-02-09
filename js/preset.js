@@ -137,15 +137,46 @@ const Preset = (() => {
                 "type": "text",
                 "id": id
             }).on("input", function() {
-                let list = $(this).val().trim().split(",");
+                let list = $(this).val().trim();
+                
+                let extraLists = [];
+                let searchIndex = 0;
+                while(list.indexOf("[", searchIndex) > -1) {
+                    let start = list.indexOf("[");
+                    searchIndex = start + 1;
+                    
+                    if(start + 1 >= list.length) {
+                        break;
+                    }
+                    
+                    let end = list.indexOf("]", start + 1);
+                    
+                    if(end > start + 1) {
+                        let innerStr = list.substring(start + 1, end);
+                        console.log("Innerstr: " + innerStr, "start", (start + 1), "end", end-1)
+                        if(innerStr.length > 0) {
+                            extraLists.push(innerStr.split(","));
+                            list = list.substring(0, start) + list.substring(end + 1);
+                            console.log(list);
+                        }
+                        break;
+                    }
+                }
+                
+                list = list.split(",");
                 
                 for(let i = list.length - 1; i >= 0; --i) {
-                    if(!list[i].length) {
+                    let item = list[i];
+                    if(!item.length) {
                         list.splice(i, 1);
                     }
                 }
                 
-                if(list.length) {
+                for(let extra of extraLists) {
+                    list.push(extra);
+                }
+                
+                if(list.length > 0) {
                     data[field.name] = list;
                 } else {
                     delete data[field.name];

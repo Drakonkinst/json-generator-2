@@ -85,7 +85,18 @@ const Generator = (() => {
         
         let output = JSON.stringify(json, function(k, v) {
             if(Array.isArray(v)) {
-                if(v.length > 0 && (v[0] == null || typeof v[0] !== "object")) {
+                if(v.length > 0) {
+                    
+                    let simple = true;
+                    for(let i = 0; i < v.length; ++i) {
+                        if(v[i] != null && typeof v[i] === "object") {
+                            simple = false;
+                        }
+                    }
+                    
+                    if(!simple) {
+                        return v;
+                    }
                     let str = "REMOVE_QUOTE[ ";
                     let first = true;
                     let numFound = 0;

@@ -58,19 +58,19 @@ function main() {
                 "name": "Id",
                 "type": "text",
                 "default": "None",
-                "tooltip": "TBA"
+                "tooltip": "The ID of this personality."
             },
             {
                 "name": "Parent",
                 "type": "text",
-                "tooltip": "TBA"
+                "tooltip": "The ID of the parent of this personality. If blank, does not inherit any personality."
             },
             {
                 "name": "Heroes",
                 "label": "Hero Classes",
                 "type": "list",
                 "default": ["None"],
-                "tooltip": "TBA"
+                "tooltip": "A comma-separated list of Hero Class IDs that are allowed to use this personality."
             },
             {
                 "name": "Weight",
@@ -78,98 +78,242 @@ function main() {
                 "min_value": 0,
                 "step_size": 0.1,
                 "precision": 1,
-                "tooltip": "TBA"
+                "tooltip": "The weighted chance for this personality to be chosen. Defaults to 1.0."
             },
             {
                 "name": "OverridesSpeech",
                 "label": "Overrides Speech",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "Whether the defined speech categories should override its parent's completely. If false, it appends the speech lines instead."
             },
             {
                 "name": "Speech",
                 "type": "nest",
-                "tooltip": "TBA",
+                "tooltip": "The Hero's speech lines for various categories. Each speech line is on their own line.",
                 "nest": [
                     {
                         "name": "Intro",
                         "type": "long_list",
                         "placeholder": "Write Speech Lines here...",
-                        "tooltip": "TBA"
+                        "tooltip": "The Hero's introduction speech that the player only sees once."
                     },
                     {
                         "name": "Interact",
+                        "label": "Ambient Interaction",
                         "type": "nest",
-                        "tooltip": "TBA",
+                        "tooltip": "Displays when the player interacts with this Hero, or randomly when the Hero is near the player.",
                         "nest": [
                             {
                                 "name": "Trusted",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA" 
+                                "tooltip": "For Trusted players." 
                             },
                             {
                                 "name": "Friend",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "For Friend players."
                             },
                             {
                                 "name": "Ally",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "For Ally players."
                             },
                             {
                                 "name": "Neutral",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "For Neutral players."
                             },
                             {
                                 "name": "Enemy",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "For Enemy players."
                             }
                         ]
                     },
                     {
                         "name": "EnterCombat",
+                        "label": "When Entering Combat",
                         "type": "nest",
-                        "tooltip": "TBA",
+                        "tooltip": "Displays when the Hero enters combat.",
                         "nest": [
                             {
                                 "name": "Generic",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "The default pool if no other categories apply."
                             },
                             {
                                 "name": "Provoked",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "When the Hero does not attack the player on sight but is attacked anyway."
                             },
                             {
                                 "name": "AmbushOnPlayer",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "When the Hero ambushes the player."
                             },
                             {
                                 "name": "ResearchAmbush",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "When the Hero ambushes the player for trying to research them."
                             },
                             {
                                 "name": "AmbushOnHero",
                                 "type": "long_list",
                                 "placeholder": "Write Speech Lines here...",
-                                "tooltip": "TBA"
+                                "tooltip": "When the player attacks the Hero without the Hero seeing them first."
+                            },
+                            {
+                                "name": "BountyOnHero",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "For players that have a bounty contract on the Hero."
+                            },
+                            {
+                                "name": "BountyOnPlayer",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "For players that the Hero is hunting a bounty on."
+                            },
+                            {
+                                "name": "BountyOnRival",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "For Rival or Nemesis players that the Hero is hunting a bounty on."
+                            },
+                            {
+                                "name": "Nemesis",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "For Nemesis players."
+                            },
+                            {
+                                "name": "Rival",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "For Rival players."
+                            },
+                            {
+                                "name": "Treason",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the player friendly-fires near a Hero or has been marked a traitor of the faction."
+                            },
+                            {
+                                "name": "PastHeroWin",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero has killed the player in the past."
+                            },
+                            {
+                                "name": "MultiHeroWin",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero has killed the player 3+ times."
+                            },
+                            {
+                                "name": "PastHeroEscape",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero escaped the player in the past."
+                            },
+                            {
+                                "name": "PastPlayerWin",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the player killed the Hero in the past."
+                            },
+                            {
+                                "name": "PastPlayerEscape",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the player escaped the Hero in the past."
+                            },
+                            {
+                                "name": "PastFight",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero and player have fought in the past, but not conclusively."
                             }
                         ]
+                    },
+                    {
+                        "name": "LowHealth",
+                        "label": "When Low Health",
+                        "type": "nest",
+                        "nest": [
+                            {
+                                "name": "LowRetreat",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero decides to retreat due to low health."
+                            },
+                            {
+                                "name": "LowEnraged",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero is unable to retreat due to being Enraged."
+                            },
+                            {
+                                "name": "DeathDefying",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero has a Death-Defying trait."
+                            },
+                            {
+                                "name": "LowPastPlayerWin",
+                                "type": "long_list",
+                                "placeholder": "Write Speech Lines here...",
+                                "tooltip": "When the Hero is about to be killed by a player they have been killed by previously."
+                            }
+                        ],
+                        "tooltip": "Displays when the Hero is low health."
+                    },
+                    {
+                        "name": "DamageTaken",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero takes damage."
+                    },
+                    {
+                        "name": "DamageDealt",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero deals damage to an enemy."
+                    },
+                    {
+                        "name": "OutnumberedRetreat",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero retreats due to being outnumbers (checked via Morale System)"
+                    },
+                    {
+                        // TODO: may turn this into a nest with all possible Phobias + Generic
+                        "name": "PhobiaExposed",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero's Phobia is exposed. May be based on Phobia trait."
+                    },
+                    {
+                        // TODO may turn this into a nest with all possible Enrages + Generic
+                        "name": "Enraged",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero becomes Enraged. May be based on Enraged trait."
+                    },
+                    {
+                        "name": "HeroWin",
+                        "type": "long_list",
+                        "placeholder": "Write Speech Lines here...",
+                        "tooltip": "When the Hero kills the player."
                     }
                 ]
             },
@@ -177,19 +321,19 @@ function main() {
                 "name": "IsUnique",
                 "label": "Unique Personality",
                 "type": "checkbox",
-                "tooltip": "TBA (yes, I know your personality is unique)"
+                "tooltip": "If true, multiple Heroes cannot exist in the game at once with this personality."
             },
             {
                 "name": "IsDefault",
                 "label": "Default Personality",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, assumes this personality is the \"default\" personality for their Hero Classes."
             },
             {
                 "name": "Level",
                 "label": "Level",
                 "type": "range",
-                "tooltip": "TBA. Defaults to [3, 30]",
+                "tooltip": "The range for the starting level of this Hero. Defaults to [3, 30].",
                 "min_value": 1,
                 "max_value": 65,
                 "step_size": 1,
@@ -199,19 +343,19 @@ function main() {
                 "name": "IsLevelFixed",
                 "label": "Level Cannot Change",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, the Hero can never level up, level down, or evolve traits."
             },
             {
                 "name": "RequiredTraits",
                 "label": "Required Traits",
                 "type": "list",
-                "tooltip": "TBA"
+                "tooltip": "A double-nested list of required traits that this Hero must have. Each nested list denotes a choice of required traits.",
             },
             {
                 "name": "IsGearFixed",
                 "label": "Gear Cannot Change",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, the Hero's gear can never evolve."
             },
             {
                 "name": "Gear",
@@ -221,37 +365,37 @@ function main() {
                         "name": "Helmet",
                         "label": "Helmet Gear Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible Helmet gear for this Hero."
                     },
                     {
                         "name": "Chestplate",
                         "label": "Helmet Gear Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible Chestplate gear for this Hero."
                     },
                     {
                         "name": "Gauntlets",
                         "label": "Gauntlets Gear Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible Gauntlets gear for this Hero."
                     },
                     {
                         "name": "Leggings",
                         "label": "Leggings Gear Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible Leggings gear for this Hero."
                     },
                     {
                         "name": "MeleeWeapon",
                         "label": "Melee Weapon Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible melee weapons for this Hero."
                     },
                     {
                         "name": "RangedWeapon",
                         "label": "Ranged Weapon Pool",
                         "type": "list",
-                        "tooltip": "TBA"
+                        "tooltip": "A comma-separated list of possible ranged weapons for this Hero."
                     }
                 ]
             },
@@ -259,31 +403,31 @@ function main() {
                 "name": "IsTraitsFixed",
                 "label": "Traits Cannot Change",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, the Hero's traits can never evolve."
             },
             {
                 "name": "IsRequiredTraitsFixed",
                 "label": "Required Traits Cannot Change",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, any traits given by Required Traits can never be removed."
             },
             {
                 "name": "IsTitleFixed",
                 "label": "Title Cannot Change",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, the Hero's title cannot change."
             },
             {
                 "name": "IsTitleRequired",
                 "label": "Must Have Related Title",
                 "type": "checkbox",
-                "tooltip": "TBA"
+                "tooltip": "If true, the Hero's title must be from the Titles list of this personality."
             },
             {
                 "name": "Titles",
                 "label": "Titles",
                 "type": "list",
-                "tooltip": "TBA"
+                "tooltip": "A comma-separated list of titles this Hero could have."
             }
             
         ],
@@ -345,7 +489,7 @@ function main() {
                 "name": "UniqueType",
                 "label": "Unique Type",
                 "type": "text",
-                "tooltip": "The unique category this trait fills, if any. Heroes can only have one trait of each UniqueType."
+                "tooltip": "The unique type this trait fills, if any. Heroes can only have one trait of each unique type."
             },
             {
                 "name": "Description",
@@ -403,13 +547,13 @@ function main() {
                 "name": "IsEpic",
                 "label": "Epic",
                 "type": "checkbox",
-                "tooltip": "Whether this trait is epic or not."
+                "tooltip": "Whether this trait is an Epic trait or not."
             },
             {
                 "name": "IsSpecial",
                 "label": "Remove From Pool",
                 "type": "checkbox",
-                "tooltip": "True if this trait should not appear in the normal pool."
+                "tooltip": "If true, removes this trait from the normal trait pool."
             },
             {
                 "name": "Titles",
@@ -420,7 +564,7 @@ function main() {
                 "name": "Criteria",
                 "label": "Group Permissions",
                 "type": "checkbox_table",
-                "tooltip": "No tooltip (yet).",
+                "tooltip": "Which groups are allowed and disallowed from having this trait.",
                 "row_labels": [ "Free", "Evil", "Man", "Hobbit", "Elf", "Dwarf", "Orc", "Beorning" ],
                 "column_labels": [ "Include", "Exclude" ],
                 "columns": [ "IncludeGroups", "ExcludeGroups" ],
@@ -429,7 +573,7 @@ function main() {
             {
                 "name": "VisibleCriteria",
                 "label": "Criteria to be Visible",
-                "tooltip": "No tooltip (yet).",
+                "tooltip": "Manages criteria that this trait needs to be visible.",
                 "type": "nest",
                 "nest": [
                     {
