@@ -52,6 +52,10 @@ function main() {
     
     let HeroPersonalityPreset = new Preset({
         "title": "HeroPersonality Generator",
+        "file_name": {
+            "field": "Id",
+            "default": "HeroPersonality"
+        },
         //"color": "#9fe3fc",
         "fields": [
             {
@@ -459,16 +463,14 @@ function main() {
                 "Speech"
             ]
         ]
-    }).setFileName(function (self) {
-        if(self.data["Id"]) {
-            return self.data["Id"];
-        } else {
-            return "HeroPersonality";
-        }
     });
     
     let HeroTraitPreset = new Preset({
         "title": "HeroTrait Generator",
+        "file_name": {
+            "field": "Id",
+            "default": "Trait"
+        },
         //"color": "#ff9494",
         "fields": [
             {
@@ -628,15 +630,9 @@ function main() {
             ],
             [
                 "Criteria",
-                "VisibleCriteria"   
+                "VisibleCriteria"
             ]
         ]
-    }).setFileName(function(self) {
-        if(self.data["Id"]) {
-            return self.data["Id"];
-        } else {
-            return "Trait";
-        }
     }).setOnLoad(function() {
         $(".text-input_name").on("blur", function () {
             if($(".text-input_id").val().length <= 0) {

@@ -743,11 +743,6 @@ const Preset = (() => {
             return this;
         }
         
-        setFileName(callback) {
-            this.fileNameCallback = callback;
-            return this;
-        }
-        
         /* EVENTS */
         onInit() {
             if(typeof this.initCallback === "function") {
@@ -784,10 +779,18 @@ const Preset = (() => {
         /* ACCESSORS */
         
         getFileName() {
-            if(typeof this.fileNameCallback === "function") {
-                return this.fileNameCallback(this);
-            } else {
+            if(!this.schema.hasOwnProperty("file_name")) {
                 return "file";
+            }
+            
+            let fileNameInfo = this.schema.file_name;
+            let keyToSearch = fileNameInfo.field;
+            let defaultName = fileNameInfo.default;
+            
+            if(this.data.hasOwnProperty(keyToSearch)) {
+                return this.data[keyToSearch];
+            } else {
+                return defaultName;
             }
         }
         
