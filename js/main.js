@@ -459,6 +459,12 @@ function main() {
                 "Speech"
             ]
         ]
+    }).setFileName(function (self) {
+        if(self.data["Id"]) {
+            return self.data["Id"];
+        } else {
+            return "HeroPersonality";
+        }
     });
     
     let HeroTraitPreset = new Preset({

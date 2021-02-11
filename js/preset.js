@@ -548,11 +548,16 @@ const Preset = (() => {
                             
                             // create new data
                             data[field.name] = {};
+                            let isEmpty = true;
                             for(let category of field.columns) {
                                 let itemsPresent = filterNonNull(memory[category]);
                                 if(itemsPresent.length > 0) {
+                                    isEmpty = false;
                                     data[field.name][category] = itemsPresent;
                                 }
+                            }
+                            if(isEmpty) {
+                                delete data[field.name];
                             }
                             
                         }
@@ -770,6 +775,7 @@ const Preset = (() => {
                 if(this.data.hasOwnProperty(id)) {
                     this.latestOutput[id] = this.data[id];
                 } else if(field.default) {
+                    // default only works for top-level
                     this.latestOutput[id] = field.default;
                 }
             }
