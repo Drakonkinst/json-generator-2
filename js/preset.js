@@ -692,7 +692,7 @@ const Preset = (() => {
             console.log("Error: Null filename");
             return;
         }
-        $.getJSON("../data/" + fileName, (json) => {
+        $.getJSON("/data/" + fileName, (json) => {
             preset.schema = json;
             preset.setTitleAndColor();
         })
