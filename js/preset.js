@@ -1,3 +1,4 @@
+let FILE_PATH = "https://drakonkinst.github.io/json-generator-2/data/"
 const Preset = (() => {
     const DEFAULT_MAX_COMPONENTS = 99;
     
@@ -692,7 +693,7 @@ const Preset = (() => {
             console.log("Error: Null filename");
             return;
         }
-        $.getJSON("./data/" + fileName, (json) => {
+        $.getJSON(FILE_PATH + fileName, (json) => {
             preset.schema = json;
             preset.setTitleAndColor();
         })
