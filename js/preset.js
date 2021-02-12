@@ -687,15 +687,29 @@ const Preset = (() => {
         return result;
     }
     
+    function readPresetFile(fileName, preset) {
+        if(fileName == null) {
+            console.log("Error: Null filename");
+            return;
+        }
+        $.getJSON("../data/" + fileName, (json) => {
+            preset.schema = json;
+            preset.setTitleAndColor();
+        })
+    }
+    
     return class Preset {
-        constructor(schema) {
-            this.schema = schema;
-            this.title = this.schema.title;
-            this.color = this.schema.color;
+        constructor(fileName) {
+            readPresetFile(fileName, this);
             this.data = {};
             this.latestOutput = "";
             this.edited = false;
             this.loaded = false;
+        }
+        
+        setTitleAndColor() {
+            this.title = this.schema.title;
+            this.color = this.schema.color;
         }
         
         /* LOGIC & FUNCTIONS */

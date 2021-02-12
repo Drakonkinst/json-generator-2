@@ -1,0 +1,233 @@
+{
+    "title": "HeroTrait Generator",
+    "file_name": {
+        "field": "Id",
+        "default": "Trait"
+    },
+    "fields": [
+        {
+            "name": "Id",
+            "type": "text",
+            "default": "None",
+            "tooltip": "The ID of this trait. It should be exactly the same as the file name (without the extension), and should be in CamelCase."
+        },
+        {
+            "name": "Name",
+            "type": "text",
+            "default": "None",
+            "tooltip": "The display name of this trait."
+        },
+        {
+            "name": "Category",
+            "type": "dropdown",
+            "choices": [
+                "Hatred",
+                "Immunity",
+                "Blessing",
+                "Combat",
+                "Vulnerability",
+                "Phobia",
+                "MortalWeakness"
+            ],
+            "default": "Hatred",
+            "tooltip": "The trait's category."
+        },
+        {
+            "name": "UniqueType",
+            "label": "Unique Type",
+            "type": "text",
+            "tooltip": "The unique type this trait fills, if any. Heroes can only have one trait of each unique type."
+        },
+        {
+            "name": "Description",
+            "default": "None",
+            "type": "component_builder",
+            "tooltip": "The trait's description, which appears in Hero Profile and can use formatted text.",
+            "component": [
+                {
+                    "name": "Text",
+                    "type": "text",
+                    "tooltip": "The text of this component.",
+                    "shortcut_if_alone": true,
+                    "required": true
+                },
+                {
+                    "name": "Color",
+                    "type": "dropdown",
+                    "tooltip": "The color of this component.",
+                    "choices": [
+                        "",
+                        "Dark Blue",
+                        "Dark Green",
+                        "Dark Aqua",
+                        "Dark Red",
+                        "Dark Purple",
+                        "Gold",
+                        "Gray",
+                        "Dark Gray",
+                        "Blue",
+                        "Green",
+                        "Aqua",
+                        "Red",
+                        "Light Purple",
+                        "Yellow",
+                        "White",
+                        "Black",
+                        "Brown"
+                    ]
+                },
+                {
+                    "name": "IsBold",
+                    "label": "Bold",
+                    "type": "checkbox",
+                    "tooltip": "Whether this component should be bold."
+                },
+                {
+                    "name": "IsItalics",
+                    "label": "Italics",
+                    "type": "checkbox",
+                    "tooltip": "Whether this component should be italicized."
+                }
+            ]
+        },
+        {
+            "name": "Icon",
+            "type": "text",
+            "tooltip": "A reference to the .png file for this trait's display icon."
+        },
+        {
+            "name": "Color",
+            "type": "dropdown",
+            "choices": [
+                "",
+                "Dark Blue",
+                "Dark Green",
+                "Dark Aqua",
+                "Dark Red",
+                "Dark Purple",
+                "Gold",
+                "Gray",
+                "Dark Gray",
+                "Blue",
+                "Green",
+                "Aqua",
+                "Red",
+                "Light Purple",
+                "Yellow",
+                "White",
+                "Black",
+                "Brown"
+            ],
+            "tooltip": "The background color of this trait's icon."
+        },
+        {
+            "name": "Weight",
+            "type": "number",
+            "min_value": 0,
+            "step_size": 0.1,
+            "precision": 1,
+            "tooltip": "The trait's weight, used for random selection. Average is 1.0. Defaults to the trait's default category weight."
+        },
+        {
+            "name": "IsEpic",
+            "label": "Epic",
+            "type": "checkbox",
+            "tooltip": "Whether this trait is an Epic trait or not."
+        },
+        {
+            "name": "IsSpecial",
+            "label": "Remove From Pool",
+            "type": "checkbox",
+            "tooltip": "If true, removes this trait from the normal trait pool."
+        },
+        {
+            "name": "Titles",
+            "type": "list",
+            "tooltip": "A list of comma-separated titles associated with this trait."
+        },
+        {
+            "name": "Criteria",
+            "label": "Group Permissions",
+            "type": "checkbox_table",
+            "tooltip": "Which groups are allowed and disallowed from having this trait.",
+            "row_labels": [
+                "Free",
+                "Evil",
+                "Man",
+                "Hobbit",
+                "Elf",
+                "Dwarf",
+                "Orc",
+                "Beorning"
+            ],
+            "column_labels": [
+                "Include",
+                "Exclude"
+            ],
+            "columns": [
+                "IncludeGroups",
+                "ExcludeGroups"
+            ],
+            "output_type": 1
+        },
+        {
+            "name": "VisibleCriteria",
+            "label": "Criteria to be Visible",
+            "tooltip": "Manages criteria that this trait needs to be visible.",
+            "type": "nest",
+            "nest": [
+                {
+                    "name": "Followers",
+                    "type": "checkbox",
+                    "tooltip": "If this trait requires Followers to be visible."
+                },
+                {
+                    "name": "Mount",
+                    "type": "checkbox",
+                    "tooltip": "If this trait requires a Mount to be visible."
+                },
+                {
+                    "name": "Summoner",
+                    "type": "checkbox",
+                    "tooltip": "If this trait requires a Summoner to be visible."
+                },
+                {
+                    "name": "MortalWeakness",
+                    "label": "Mortal Weakness",
+                    "type": "checkbox",
+                    "tooltip": "If this trait requires Mortal Weakness to be visible."
+                },
+                {
+                    "name": "Relationship",
+                    "type": "dropdown",
+                    "choices": [
+                        "",
+                        "Guardian",
+                        "Ward",
+                        "BloodBrother"
+                    ],
+                    "tooltip": "The required relationship this Hero must have for this trait to be visible."
+                }
+            ]
+        }
+    ],
+    "sections": [
+        [
+            "Name",
+            "Id",
+            "Category",
+            "UniqueType",
+            "Description",
+            "Weight",
+            "Icon",
+            "Color",
+            "IsEpic",
+            "IsSpecial",
+            "Titles"
+        ],
+        [
+            "Criteria",
+            "VisibleCriteria"
+        ]
+    ]
+}
