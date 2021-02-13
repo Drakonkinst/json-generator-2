@@ -1,4 +1,3 @@
-let FILE_PATH = "https://drakonkinst.github.io/json-generator-2/data/"
 const Preset = (() => {
     const DEFAULT_MAX_COMPONENTS = 99;
     
@@ -700,17 +699,14 @@ const Preset = (() => {
     }
     
     return class Preset {
-        constructor(fileName) {
-            readPresetFile(fileName, this);
+        constructor(schema) {
+            this.schema = schema;
+            this.title = this.schema.title;
+            this.color = this.schema.color;
             this.data = {};
             this.latestOutput = "";
             this.edited = false;
             this.loaded = false;
-        }
-        
-        setTitleAndColor() {
-            this.title = this.schema.title;
-            this.color = this.schema.color;
         }
         
         /* LOGIC & FUNCTIONS */
