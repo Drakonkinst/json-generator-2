@@ -6,4 +6,4 @@ Certain complex form options have been manually coded, but a majority of basic f
 arrays, dropdown inputs, buttons, and checkboxes should be handled easily. Custom parsing and output functions are available
 for more complex features.
 
-[Go to generator](https://drakonkinst.github.io/json-generator/)
+[Go to generator](https://drakonkinst.github.io/json-generator-2/)
