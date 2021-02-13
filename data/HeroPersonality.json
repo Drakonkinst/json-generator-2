@@ -34,6 +34,12 @@
             "tooltip": "The weighted chance for this personality to be chosen. Defaults to 1.0."
         },
         {
+            "name": "NonAggressive",
+            "label": "Non-Aggressive Hero",
+            "type": "checkbox",
+            "tooltip": "Whether this Hero is a non-aggressive Hero that does not attack on sight without a Bounty or Rival."
+        },
+        {
             "name": "OverridesSpeech",
             "label": "Overrides Speech",
             "type": "checkbox",
@@ -105,6 +111,12 @@
                             "type": "long_list",
                             "placeholder": "Write Speech Lines here...",
                             "tooltip": "When the Hero does not attack the player on sight but is attacked anyway."
+                        },
+                        {
+                            "name": "BloodBrotherRevenge",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here...",
+                            "tooltip": "When the player is responsible for killing the Hero's Blood Brother or Ward."
                         },
                         {
                             "name": "AmbushOnPlayer",
@@ -301,7 +313,7 @@
                             "placeholder": "Write Speech Lines here..."
                         },
                         {
-                            "name": "Alone",
+                            "name": "SingleCombat",
                             "type": "long_list",
                             "placeholder": "Write Speech Lines here..."
                         }
@@ -472,7 +484,7 @@
                 },
                 {
                     "name": "Chestplate",
-                    "label": "Helmet Gear Pool",
+                    "label": "Chestplate Gear Pool",
                     "type": "list",
                     "tooltip": "A comma-separated list of possible Chestplate gear for this Hero."
                 },
@@ -548,7 +560,8 @@
             "IsTraitsFixed",
             "IsRequiredTraitsFixed",
             "IsUnique",
-            "IsDefault"
+            "IsDefault",
+            "NonAggressive"
         ],
         [
             "IsGearFixed",

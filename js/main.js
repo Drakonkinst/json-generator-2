@@ -4,7 +4,7 @@ function main() {
     console.log("Loading!");
     let start = Date.now();
     
-    // need to add name of file (w/out .json) to this list
+    // need to add name of file (w/out .json) to this list to register
     let allPresets = [ "HeroTrait", "HeroPersonality" ];
     let presetMap = {};
     let currentPresetID;
@@ -21,7 +21,6 @@ function main() {
     }
     
     /* PRESET LOADER */
-    
     function loadPresets() {
         let first = null;
         let numFound = 0;
@@ -55,7 +54,6 @@ function main() {
     }
     
     /* PRESET MANAGER */
-    
     function setCurrentPreset(presetID) {
         if(!presetMap.hasOwnProperty(presetID)) {
             console.log("Error: Unknown preset " + presetID);

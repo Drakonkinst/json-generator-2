@@ -1,10 +1,31 @@
 const Preset = (() => {
     const DEFAULT_MAX_COMPONENTS = 99;
     
+    /* HELPERS */
     function classify(str) {
         return str.toLowerCase().replace(/ /g, "-");
     }
     
+    function findFieldInfoByName(name, schema) {
+        for(let obj of schema) {
+            if(obj.name == name) {
+                return obj;
+            }
+        }
+        return null;
+    }
+
+    function filterNonNull(arr) {
+        let result = [];
+        for(let item of arr) {
+            if(item != null) {
+                result.push(item);
+            }
+        }
+        return result;
+    }
+    
+    /* FIELD ELEMENT CREATION */
     function parseField(field, preset, data = preset.data) {
         let type = field.type;
         let fieldElement;
@@ -68,8 +89,8 @@ const Preset = (() => {
                 "id": id
             })
             .on("input", function() {
-                let text = $(this).val().trim();
-                if(text.length) {
+                let text = $(this).val().replace(/\s+/g, " ");
+                if(text.trim().length) {
                     data[field.name] = text;
                 } else {
                     delete data[field.name];
@@ -137,7 +158,7 @@ const Preset = (() => {
                 "type": "text",
                 "id": id
             }).on("input", function() {
-                let list = $(this).val().trim();
+                let list = $(this).val().replace(/\s+/g, " ");
                 
                 let extraLists = [];
                 let searchIndex = 0;
@@ -167,7 +188,7 @@ const Preset = (() => {
                 
                 for(let i = list.length - 1; i >= 0; --i) {
                     let item = list[i];
-                    if(!item.length) {
+                    if(!item.trim().length) {
                         list.splice(i, 1);
                     }
                 }
@@ -605,7 +626,7 @@ const Preset = (() => {
         let content = $("<div>").addClass("nested-content");
         
         let isHidden = true;
-        let nestControl = $("<button>").addClass("nested-input-control")
+        $("<button>").addClass("nested-input-control")
             .text("+ Expand")
             .on("click", function() {
                 if(isHidden) {
@@ -666,36 +687,6 @@ const Preset = (() => {
         preset.onUpdate();
         
         return container;
-    }
-    
-    function findFieldInfoByName(name, schema) {
-        for(let obj of schema) {
-            if(obj.name == name) {
-                return obj;
-            }
-        }
-        return null;
-    }
-    
-    function filterNonNull(arr) {
-        let result = [];
-        for(let item of arr) {
-            if(item != null) {
-                result.push(item);
-            }
-        }
-        return result;
-    }
-    
-    function readPresetFile(fileName, preset) {
-        if(fileName == null) {
-            console.log("Error: Null filename");
-            return;
-        }
-        $.getJSON(FILE_PATH + fileName, (json) => {
-            preset.schema = json;
-            preset.setTitleAndColor();
-        })
     }
     
     return class Preset {

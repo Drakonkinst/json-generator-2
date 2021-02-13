@@ -77,8 +77,8 @@ const Generator = (() => {
             return item;
         }
     }
+    
     function convertJSONToText(json, minify) {
-        
         if(minify) {
             return JSON.stringify(json);
         }
@@ -86,7 +86,6 @@ const Generator = (() => {
         let output = JSON.stringify(json, function(k, v) {
             if(Array.isArray(v)) {
                 if(v.length > 0) {
-                    
                     let simple = true;
                     for(let i = 0; i < v.length; ++i) {
                         if(v[i] != null && typeof v[i] === "object") {
@@ -97,6 +96,7 @@ const Generator = (() => {
                     if(!simple) {
                         return v;
                     }
+                    
                     let str = "REMOVE_QUOTE[ ";
                     let first = true;
                     let numFound = 0;
