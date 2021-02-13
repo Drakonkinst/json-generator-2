@@ -231,6 +231,170 @@
                     "tooltip": "Displays when the Hero is low health."
                 },
                 {
+                    "name": "Enraged",
+                    "type": "nest",
+                    "tooltip": "When the Hero becomes Enraged. May be based on Enraged trait.",
+                    "nest": [
+                        {
+                            "name": "Generic",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Wolves",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Spiders",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Undead",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Fire",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Frost",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Magic",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Curse",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Poison",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Explosion",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Ranged",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Acrobatics",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "CivilianAttacked",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Alone",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        }
+                    ]
+                },
+                {
+                    "name": "PhobiaExposed",
+                    "type": "nest",
+                    "tooltip": "When the Hero's Phobia is exposed. May be based on Phobia trait.",
+                    "nest": [
+                        {
+                            "name": "Generic",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Wolves",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Spiders",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Trolls",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "TreeFolk",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Dragons",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Eagles",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Undead",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Fire",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Magic",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Curse",
+                            "type": "long_list",
+                            "placeholder": "GenericWrite Speech Lines here..."
+                        },
+                        {
+                            "name": "Poison",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Frost",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Underground",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "Explosion",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        },
+                        {
+                            "name": "DangerousEnemy",
+                            "type": "long_list",
+                            "placeholder": "Write Speech Lines here..."
+                        }
+                    ]
+                },
+                {
                     "name": "DamageTaken",
                     "type": "long_list",
                     "placeholder": "Write Speech Lines here...",
@@ -247,18 +411,6 @@
                     "type": "long_list",
                     "placeholder": "Write Speech Lines here...",
                     "tooltip": "When the Hero retreats due to being outnumbers (checked via Morale System)"
-                },
-                {
-                    "name": "PhobiaExposed",
-                    "type": "long_list",
-                    "placeholder": "Write Speech Lines here...",
-                    "tooltip": "When the Hero's Phobia is exposed. May be based on Phobia trait."
-                },
-                {
-                    "name": "Enraged",
-                    "type": "long_list",
-                    "placeholder": "Write Speech Lines here...",
-                    "tooltip": "When the Hero becomes Enraged. May be based on Enraged trait."
                 },
                 {
                     "name": "HeroWin",
