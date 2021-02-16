@@ -34,16 +34,28 @@
             "tooltip": "The weighted chance for this personality to be chosen. Defaults to 1.0."
         },
         {
+            "name": "Bio",
+            "label": "Biography",
+            "tooltip": "A blurb about this Hero's background.",
+            "type": "long_text"
+        },
+        {
             "name": "NonAggressive",
             "label": "Non-Aggressive Hero",
             "type": "checkbox",
             "tooltip": "Whether this Hero is a non-aggressive Hero that does not attack on sight without a Bounty or Rival."
         },
         {
-            "name": "OverridesSpeech",
-            "label": "Overrides Speech",
+            "name": "OverridesAllSpeech",
+            "label": "Overrides ALL Speech",
             "type": "checkbox",
-            "tooltip": "Whether the defined speech categories should override its parent's completely. If false, it appends the speech lines instead."
+            "tooltip": "Whether ALL speech categories should override their parents' completely. If false, it appends the speech lines instead."
+        },
+        {
+            "name": "OverridesSpeech",
+            "label": "Override Speech Categories",
+            "type": "list",
+            "tooltip": "Overrides the defined speech categories completely instead of appending them to the parent. For nested categories, you may use the notation Nest.Category. Only referring to Category will also work, but will apply to all instances of that Category name."
         },
         {
             "name": "Speech",
@@ -551,6 +563,7 @@
             "Parent",
             "Heroes",
             "Weight",
+            "Bio",
             "Titles",
             "IsTitleFixed",
             "IsTitleRequired",
@@ -566,6 +579,7 @@
         [
             "IsGearFixed",
             "Gear",
+            "OverridesAllSpeech",
             "OverridesSpeech",
             "Speech"
         ]

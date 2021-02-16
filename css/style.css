@@ -138,13 +138,16 @@ button {
     width: 190px;
 }
 
-.long-list-input {
+.long-list-input, .long-text-input {
     padding: 5px;
     width: 225px;
     height: 75px;
 }
 
-.long-list-input, .long-list-input::placeholder {
+.long-list-input,
+.long-list-input::placeholder,
+.long-text-input,
+.long-text-input::placeholder {
     white-space: nowrap;
     overflow: auto;
     font-family: 'Times New Roman', Times, serif;

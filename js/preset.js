@@ -25,6 +25,10 @@ const Preset = (() => {
         return result;
     }
     
+    function trimExtraSpaces(str) {
+        return str.replace(/\s+/g, " ");
+    }
+    
     /* FIELD ELEMENT CREATION */
     function parseField(field, preset, data = preset.data) {
         let type = field.type;
@@ -39,8 +43,8 @@ const Preset = (() => {
         } else if(type === "long_list") {
             // for dialogue - textarea separated by newlines
             fieldElement = createLongListInput(field, preset, data);
-            //fieldElement = createListInput(field, preset, data);
-            
+        } else if(type === "long_text") {
+            fieldElement = createLongTextInput(field, preset, data);
         } else if(type === "number") {
             fieldElement = createNumberInput(field, preset, data);
         } else if(type === "range") {
@@ -89,7 +93,7 @@ const Preset = (() => {
                 "id": id
             })
             .on("input", function() {
-                let text = $(this).val().replace(/\s+/g, " ");
+                let text = trimExtraSpaces($(this).val());
                 if(text.trim().length) {
                     data[field.name] = text;
                 } else {
@@ -158,7 +162,7 @@ const Preset = (() => {
                 "type": "text",
                 "id": id
             }).on("input", function() {
-                let list = $(this).val().replace(/\s+/g, " ");
+                let list = trimExtraSpaces($(this).val());
                 
                 let extraLists = [];
                 let searchIndex = 0;
@@ -254,6 +258,49 @@ const Preset = (() => {
             input.attr("placeholder", field.placeholder);
         }
         
+        return elem;
+    }
+    
+    function createLongTextInput(field, preset, data) {
+        let id = "long-text-input_" + classify(field.name);
+        let label = field.label ? field.label : field.name;
+
+        if(field.default) {
+            label += "*";
+        }
+
+        let elem = $("<div>").addClass("input-block");
+        let labelEl = $("<label>").addClass("input-label")
+            .text(label)
+            .attr("for", id)
+            .appendTo(elem);
+
+        if(field.tooltip) {
+            labelEl.attr("title", field.tooltip);
+            labelEl.addClass("has_tooltip");
+        }
+
+        let input = $("<textarea>").addClass("input long-text-input " + id)
+            .attr({
+                "spellcheck": false,
+                "type": "text",
+                "id": id
+            }).on("input", function () {
+                let list = $(this).val();
+
+                if(list.length) {
+                    data[field.name] = list;
+                } else {
+                    delete data[field.name];
+                }
+
+                preset.onUpdate();
+            }).appendTo(elem);
+
+        if(field.placeholder) {
+            input.attr("placeholder", field.placeholder);
+        }
+
         return elem;
     }
     
