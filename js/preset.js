@@ -35,35 +35,35 @@ const Preset = (() => {
         let fieldElement;
         
         if(type === "text") {
-            fieldElement = createTextInput(field, preset, data);
+            return createTextInput(field, preset, data);
         } else if(type === "checkbox") {
-            fieldElement = createCheckboxInput(field, preset, data);
+            return createCheckboxInput(field, preset, data);
         } else if(type === "list") {
-            fieldElement = createListInput(field, preset, data);
+            return createListInput(field, preset, data);
         } else if(type === "long_list") {
             // for dialogue - textarea separated by newlines
-            fieldElement = createLongListInput(field, preset, data);
+            return createLongListInput(field, preset, data);
         } else if(type === "long_text") {
-            fieldElement = createLongTextInput(field, preset, data);
+            return createLongTextInput(field, preset, data);
         } else if(type === "number") {
-            fieldElement = createNumberInput(field, preset, data);
+            return createNumberInput(field, preset, data);
         } else if(type === "range") {
-            fieldElement = createRangeInput(field, preset, data);
+            return createRangeInput(field, preset, data);
         } else if(type === "dropdown") {
-            fieldElement = createDropdownInput(field, preset, data);
+            return createDropdownInput(field, preset, data);
         } else if(type === "component_builder") {
-            fieldElement = createComponentBuilder(field, preset, data);
+            return createComponentBuilder(field, preset, data);
+        } else if(type === "map") {
+            return createMap(field, preset, data);
         } else if(type === "checkbox_table") {
-            fieldElement = createCheckboxTable(field, preset, data);
+            return createCheckboxTable(field, preset, data);
         } else if(type === "nest") {
             // object
-            fieldElement = handleNestedInput(field, preset, data);
+            return handleNestedInput(field, preset, data);
         } else {
             console.log("Unknown type: " + type + "!");
-            return;
+            return null;
         }
-        
-        return fieldElement;
     }
 
     function createTextInput(field, preset, data) {
@@ -562,6 +562,11 @@ const Preset = (() => {
         componentsElem.appendTo(elem);
         
         return elem;
+    }
+    
+    function createMap(field, preset, data) {
+        // TODO
+        
     }
     
     function createCheckboxTable(field, preset, data) {
